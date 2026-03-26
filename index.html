@@ -551,6 +551,219 @@
             border-color: #000;
         }
 
+        /* Cursor Glow Effect */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.2) 0%, rgba(255, 150, 50, 0.08) 30%, transparent 60%);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+            mix-blend-mode: screen;
+        }
+
+        .cursor-glow.on-dark {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 220, 150, 0.4) 0%, rgba(255, 180, 80, 0.2) 20%, rgba(255, 100, 50, 0.08) 40%, transparent 60%);
+        }
+
+        /* Floating Particles (서울라이트) */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float-particle 15s infinite ease-in-out;
+        }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(-50vh) translateX(20px) scale(1.5); opacity: 0.6; }
+            90% { opacity: 0.3; }
+        }
+
+        /* 3D Tilt Effect on Cards */
+        .gallery-item {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .gallery-item-image {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-image {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* Text Glitch Effect */
+        .glitch-text {
+            position: relative;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        .glitch-text:hover::before {
+            animation: glitch-1 0.3s linear;
+            color: #ff0040;
+            opacity: 0.8;
+        }
+
+        .glitch-text:hover::after {
+            animation: glitch-2 0.3s linear;
+            color: #00ffff;
+            opacity: 0.8;
+        }
+
+        @keyframes glitch-1 {
+            0% { clip-path: inset(40% 0 61% 0); transform: translateX(-2px); }
+            20% { clip-path: inset(92% 0 1% 0); transform: translateX(2px); }
+            40% { clip-path: inset(43% 0 1% 0); transform: translateX(-2px); }
+            60% { clip-path: inset(25% 0 58% 0); transform: translateX(2px); }
+            80% { clip-path: inset(54% 0 7% 0); transform: translateX(-2px); }
+            100% { clip-path: inset(58% 0 43% 0); transform: translateX(2px); }
+        }
+
+        @keyframes glitch-2 {
+            0% { clip-path: inset(65% 0 14% 0); transform: translateX(2px); }
+            20% { clip-path: inset(10% 0 80% 0); transform: translateX(-2px); }
+            40% { clip-path: inset(70% 0 5% 0); transform: translateX(2px); }
+            60% { clip-path: inset(15% 0 65% 0); transform: translateX(-2px); }
+            80% { clip-path: inset(80% 0 5% 0); transform: translateX(2px); }
+            100% { clip-path: inset(5% 0 85% 0); transform: translateX(-2px); }
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35, #ffd700, #ff6b35);
+            z-index: 9999;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        /* Reveal Animation for Text */
+        .reveal-text {
+            overflow: hidden;
+        }
+
+        .reveal-text span {
+            display: inline-block;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .reveal-text.visible span {
+            transform: translateY(0);
+        }
+
+        /* Smooth Morphing Background */
+        .morphing-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background: radial-gradient(ellipse at var(--mouse-x, 50%) var(--mouse-y, 50%), #ffd700 0%, transparent 50%);
+            transition: opacity 0.5s ease;
+        }
+
+        /* Scroll Fade-in Animations */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-section.delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-section.delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-section.delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* DDP SVG Silhouette */
+        .ddp-silhouette {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.08;
+        }
+
+        .ddp-silhouette svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ddp-path {
+            fill: none;
+            stroke: #000;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            transition: stroke-dashoffset 0.1s ease-out;
+        }
+
+        .feature-quote .ddp-silhouette {
+            opacity: 0.15;
+        }
+
+        .feature-quote .ddp-path {
+            stroke: #fff;
+        }
+
         /* Footer */
         footer {
             padding: 32px 48px;
@@ -648,6 +861,37 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Morphing Background -->
+    <div class="morphing-bg" id="morphingBg"></div>
+
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- DDP Silhouette SVG -->
+    <div class="ddp-silhouette" id="ddpSilhouette">
+        <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+            <path class="ddp-path" id="ddpPath" d="
+                M0,180
+                C50,180 100,175 150,165
+                Q200,155 250,140
+                C300,125 350,105 400,90
+                Q450,75 500,70
+                C550,65 600,65 650,70
+                Q700,75 750,85
+                C800,95 850,110 900,130
+                Q950,150 1000,160
+                C1050,170 1100,175 1150,178
+                L1200,180
+            " />
+        </svg>
+    </div>
+
     <nav class="nav" id="nav">
         <div class="nav-logo">DDP</div>
         <div class="nav-center">
@@ -664,7 +908,7 @@
     <section class="cover">
         <div class="cover-main">
             <p class="cover-issue">Issue No. 01 — 2025</p>
-            <h1 class="cover-headline"><strong>Dream</strong> <em>Design</em> Play</h1>
+            <h1 class="cover-headline glitch-text" data-text="Dream Design Play"><strong>Dream</strong> <em>Design</em> Play</h1>
             <p class="cover-sub">Dongdaemun Design Plaza</p>
         </div>
         <div class="cover-footer">
@@ -678,7 +922,7 @@
     </section>
 
     <!-- Table of Contents -->
-    <section class="toc" id="toc">
+    <section class="toc fade-section" id="toc">
         <div class="toc-header">
             <h2 class="toc-title">Contents</h2>
             <span class="toc-issue">2025</span>
@@ -714,7 +958,7 @@
     <hr class="divider">
 
     <!-- Article 1: Architecture Tour -->
-    <article class="article" id="architecture">
+    <article class="article fade-section" id="architecture">
         <p class="article-label">Architecture</p>
         <h2 class="article-title">DDP 건축투어</h2>
         <p class="article-subtitle">자하 하디드의 건축 언어를 따라 걷다</p>
@@ -747,14 +991,14 @@
     </article>
 
     <!-- Feature Quote: Seoul Light -->
-    <section class="feature-quote" id="seoul-light">
+    <section class="feature-quote fade-section" id="seoul-light">
         <p class="feature-quote-label">Global Media Art Festival</p>
         <h2>"Seoul Light"</h2>
         <p>세계 3대 디자인 어워드와 기네스 세계기록에 등재된 글로벌 미디어아트 축제</p>
     </section>
 
     <!-- Article 2: Seoul Light -->
-    <article class="article">
+    <article class="article fade-section">
         <figure class="article-image" style="max-width: 500px;">
             <img src="http://tong.visitkorea.or.kr/cms/resource/83/3583683_image2_1.jpg" alt="Seoul Light DDP">
             <figcaption class="article-caption">서울라이트 DDP 2025 겨울</figcaption>
@@ -770,7 +1014,7 @@
     <hr class="divider">
 
     <!-- Four Seasons Gallery -->
-    <section class="gallery-section" id="seasons">
+    <section class="gallery-section fade-section" id="seasons">
         <div class="gallery-header">
             <p class="gallery-label">DDP Seasonal Festivals</p>
             <h2 class="gallery-title">Four Seasons</h2>
@@ -808,7 +1052,7 @@
     </section>
 
     <!-- Credits -->
-    <section class="credits" id="credits">
+    <section class="credits fade-section" id="credits">
         <div class="credits-inner">
             <div class="credits-left">
                 <h2>Dream<br>Design<br>Play</h2>
@@ -839,12 +1083,175 @@
     </footer>
 
     <script>
+        // ===== VARIABLES =====
         const nav = document.getElementById('nav');
+        const cursorGlow = document.getElementById('cursorGlow');
+        const scrollProgress = document.getElementById('scrollProgress');
+        const morphingBg = document.getElementById('morphingBg');
+        const particlesContainer = document.getElementById('particles');
+        const ddpPath = document.getElementById('ddpPath');
+
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+
+        // ===== 1. NAVIGATION SCROLL =====
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ===== 2. CURSOR GLOW (서울라이트 테마) =====
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            // Morphing background follows cursor
+            const xPercent = (e.clientX / window.innerWidth) * 100;
+            const yPercent = (e.clientY / window.innerHeight) * 100;
+            morphingBg.style.setProperty('--mouse-x', xPercent + '%');
+            morphingBg.style.setProperty('--mouse-y', yPercent + '%');
+
+            // Check dark section
+            const elementUnder = document.elementFromPoint(e.clientX, e.clientY);
+            cursorGlow.classList.toggle('on-dark', elementUnder?.closest('.feature-quote'));
+        });
+
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.08;
+            glowY += (mouseY - glowY) * 0.08;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+
+        // ===== 3. FLOATING PARTICLES =====
+        function createParticles() {
+            const colors = [
+                'rgba(255, 200, 100, 0.6)',
+                'rgba(255, 150, 80, 0.5)',
+                'rgba(255, 220, 150, 0.4)',
+                'rgba(255, 180, 120, 0.5)'
+            ];
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.width = (Math.random() * 6 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, transparent 70%)`;
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // ===== 4. SCROLL PROGRESS BAR =====
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+            scrollProgress.style.transform = `scaleX(${scrollPercent})`;
+            scrollProgress.style.width = '100%';
+        }
+
+        // ===== 5. FADE-IN SECTIONS =====
+        const fadeSections = document.querySelectorAll('.fade-section');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        fadeSections.forEach(section => fadeObserver.observe(section));
+
+        // ===== 6. DDP SVG PATH DRAWING =====
+        const pathLength = ddpPath.getTotalLength();
+        ddpPath.style.strokeDasharray = pathLength;
+        ddpPath.style.strokeDashoffset = pathLength;
+
+        function updatePathOnScroll() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+            ddpPath.style.strokeDashoffset = pathLength * (1 - scrollPercent);
+        }
+
+        // ===== 7. 3D TILT EFFECT ON GALLERY =====
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                const img = item.querySelector('.gallery-item-image');
+                img.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                const img = item.querySelector('.gallery-item-image');
+                img.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // ===== 8. MAGNETIC EFFECT ON LINKS =====
+        const magneticElements = document.querySelectorAll('.nav-links a, .toc-item');
+
+        magneticElements.forEach(el => {
+            el.classList.add('magnetic');
+
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // ===== COMBINED SCROLL HANDLER =====
+        window.addEventListener('scroll', () => {
+            updateScrollProgress();
+            updatePathOnScroll();
+        });
+
+        // Initial calls
+        updateScrollProgress();
+        updatePathOnScroll();
+
+        // ===== MOBILE DETECTION =====
+        if ('ontouchstart' in window) {
+            cursorGlow.style.display = 'none';
+            morphingBg.style.display = 'none';
+        }
+
+        // ===== COVER PARALLAX =====
+        const coverHeadline = document.querySelector('.cover-headline');
+        const coverSub = document.querySelector('.cover-sub');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY < window.innerHeight) {
+                const opacity = 1 - (scrollY / window.innerHeight) * 1.5;
+                const translateY = scrollY * 0.4;
+                coverHeadline.style.transform = `translateY(${translateY}px)`;
+                coverHeadline.style.opacity = Math.max(0, opacity);
+                coverSub.style.transform = `translateY(${translateY * 0.6}px)`;
+                coverSub.style.opacity = Math.max(0, opacity);
             }
         });
     </script>
